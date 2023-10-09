@@ -1,11 +1,24 @@
-
-
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { setUser } from "../redux/loginSlice";
 
 export default function Navbar(){
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const userLoged = useSelector((state:any)=> state.loginRedux)
+
+    const dispatch = useDispatch();
+
+    function logout(){
+        dispatch(setUser({
+            "id":-1,
+            "email":'',
+            "name":'',
+            "pass":''
+        }))
+
+    }
 
     return(
 
@@ -41,8 +54,13 @@ export default function Navbar(){
                     <Link className="nav-link active"  to="/about">About</Link>
                 </li>
                 </ul>
-                <div><Link to="/login">Login</Link></div>
-                <div>Usuario:{userLoged.email}</div>
+                <div className= {userLoged.email==''?'show':'collapse'} >
+                    <Link to="/login">Login</Link>
+                </div>
+                <div className={userLoged.email!=''?'show':'collapse'}>
+                    Usuario:{userLoged.email}
+                    <button onClick={logout}>logout</button>
+                </div>
             </div>
             </div>
         </nav>

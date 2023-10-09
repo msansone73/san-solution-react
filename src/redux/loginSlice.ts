@@ -3,7 +3,7 @@ import { UserModel } from "../model/UserModel"
 
 const initialState: UserModel = {
     id:-1,
-    email:'fff',
+    email:'',
     name:'',
     pass:''
 }
