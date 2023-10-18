@@ -12,10 +12,13 @@ export default function Navbar(){
 
     function logout(){
         dispatch(setUser({
-            "id":-1,
-            "email":'',
-            "name":'',
-            "pass":''
+            "id": -1,
+            "email": '',
+            "name": '',
+            "pass": '',
+            "dateCreate": new Date(),
+            "admin": false,
+            "enable": false
         }))
 
     }
@@ -32,6 +35,11 @@ export default function Navbar(){
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                     <Link className="nav-link active"  to="/">Home</Link>
+                </li>
+                <li className="nav-item" >
+                    <div  className={userLoged.email!=''?'show':'collapse'}>
+                        <Link className="nav-link active"  to="/user">Usuarios</Link>
+                    </div>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="#">Link</a>
@@ -58,7 +66,7 @@ export default function Navbar(){
                     <Link to="/login">Login</Link>
                 </div>
                 <div className={userLoged.email!=''?'show':'collapse'}>
-                    Usuario:{userLoged.email}
+                    Usuario:{userLoged.name}
                     <button onClick={logout}>logout</button>
                 </div>
             </div>
