@@ -5,7 +5,7 @@ import {Buffer} from 'buffer';
 
 export default function Users(){
 
-    const url = "http://localhost:8000/api/security"
+    const url = import.meta.env.VITE_API_URL+"/security"
     const username = 'admin'
     const password = 'Batata'
     const token = `${username}:${password}`;

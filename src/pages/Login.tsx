@@ -10,9 +10,9 @@ export default function Login(){
     const [mensagem, setMensagem] = useState('');
     const navigate = useNavigate();
 
-    const url = "http://localhost:8000/api/security/login"
-    const username = 'admin'
-    const password = 'Batata'
+    const url = import.meta.env.VITE_API_URL+"/security/login"
+    const username = import.meta.env.VITE_API_URS
+    const password = import.meta.env.VITE_API_PASS
     const token = `${username}:${password}`;
     const encodedToken = Buffer.from(token).toString('base64');
     const [login, setLogin] = useState("")
